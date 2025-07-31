@@ -55,5 +55,5 @@ python simulacoes_leilao.py
 
 Priscila Evangelista de Souza  
 Doutoranda em Economia Aplicada - Universidade de Brasília (UnB)  
-E-mail: priscila@unb.br
+E-mail: priscilahe@gmail.com.br
 
