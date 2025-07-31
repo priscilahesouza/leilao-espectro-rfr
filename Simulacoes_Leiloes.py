@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Jul 31 11:22:27 2025
+
+@author: priscila
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -112,4 +119,3 @@ plot_metric(eff_sym, eff_asym, 'Eficiência Alocativa', 'Probabilidade de Aloca�
 plot_metric(ent_sym, ent_asym, 'Frequência de Entrada (Mecanismo B)', 'Frequência Média', 'grafico_entrada.png')
 
 print("Simulações concluídas e gráficos gerados.")
-
