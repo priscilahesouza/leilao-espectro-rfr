@@ -41,7 +41,8 @@ def simulate_mechanism_a(v_E, v_I):
     return payment, efficiency, None
 
 def simulate_mechanism_b(v_E, v_I):
-    bids_I = (n_I - 1) / n_I * v_I
+    # Agora incumbentes ofertam seus valores verdadeiros (não o lance de equilíbrio FPA)
+    bids_I = v_I  
     max_bid_I = np.max(bids_I)
     max_val_E = np.max(v_E)
     if max_val_E >= max_bid_I:
@@ -53,12 +54,12 @@ def simulate_mechanism_b(v_E, v_I):
         winner_value = v_I[np.argmax(bids_I)]
         entry = 0
     all_values = np.concatenate([v_E, v_I])
-    efficiency = 1 if winner_value == np.max(all_values) else 0
+    efficiency = 1 # always efficient
     return payment, efficiency, entry
 
 # Simulation function
 def run_simulation(asymmetric=False):
-    results = {'FPA': [], 'SPA': [], 'A': [], 'B': []}
+    results = {'SPA': [], 'FPA': [], 'A': [], 'B': []}
     for _ in range(n_sim):
         if asymmetric:
             v_E = np.random.uniform(0, theta, n_E)
@@ -67,8 +68,8 @@ def run_simulation(asymmetric=False):
         v_I = np.random.uniform(0, 1, n_I)
         values = np.concatenate([v_E, v_I])
 
-        results['FPA'].append(simulate_fpa(values))
         results['SPA'].append(simulate_spa(values))
+        results['FPA'].append(simulate_fpa(values))
         results['A'].append(simulate_mechanism_a(v_E, v_I))
         results['B'].append(simulate_mechanism_b(v_E, v_I))
     return results
